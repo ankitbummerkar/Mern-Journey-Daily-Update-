@@ -36,7 +36,7 @@ const app = () => {
 const Car = () => {
   return <div>hello world</div>;
 };
-const app = () => {
+const App = () => {
   return (
     <>
       <Car />
@@ -66,15 +66,15 @@ const student = ({ name, age }) => {
 // list rendering
 const app = () => {
   const students = [
-    { name: "john", age: 20 },
-    { name: "doe", age: 22 },
+    { id: 1, name: "john", age: 20 },
+    { id: 2, name: "doe", age: 22 },
   ];
 
   return (
     <>
       <ul>
         {students.map((student) => (
-          <li key={student.name}>
+          <li key={student.id}>
             {student.name} and {student.age}
           </li>
         ))}
@@ -138,7 +138,7 @@ const App = () => {
     <>
       <h1>{count}</h1>
       <button onClick={() => setCount(count + 1)}>Increment</button>
-      <button onClick={() => setCount(count - 1)}>Decrement</button>{" "}
+      <button onClick={() => setCount(count - 1)}>Decrement</button>
     </>
   );
 };
@@ -182,10 +182,3 @@ const App = () => {
     </Usercontext.Provider>
   );
 };
-
-// useMemo
-
-const a = useMemo(() => {}, []);
-
-// useCallback
-const b = useCallback(() => {}, []);
