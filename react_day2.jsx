@@ -123,3 +123,20 @@ const App = () => {
 };
 
 // pagination
+
+const page_size = 10;
+
+const App = () => {
+  const [pgidx, setPgidx] = useState(0);
+
+  const postitem = apipost
+    .slice(pgidx * page_size, (pgidx + 1) * page_size)
+    .map((item) => <div key={item.id}>{item.title}</div>);
+
+  const numberofpages = Math.ceil(apipost.length / page_size);
+  let button = [];
+  for (let i = 0; i < numberofpages; i++) {
+    button.push(<button onClick={() => setPgidx(i)}>{i + 1}</button>);
+  }
+  return <div>{postitem}</div>;
+};
