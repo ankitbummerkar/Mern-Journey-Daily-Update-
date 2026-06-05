@@ -15,8 +15,11 @@ const Hero = () => {
             chef the easy way with flavoriz
           </p>
 
-          <button className="mt-8  bg-[#734060] text-emerald-100 px-6 py-3 shadow-lg shadow-gray-800 rounded-lg hover:bg-[#734060] brightness-100 hover:scale-105 transition">
-            Shop Now
+          <button
+            className="mt-8  bg-[#734060] active:scale-95 active:shadow-2xl
+ text-emerald-100 px-6 py-3 shadow-lg shadow-gray-800 rounded-lg hover:bg-[#734060] brightness-100 hover:scale-105 transition"
+          >
+            <a href="#list"> Shop Now</a>
           </button>
         </div>
 

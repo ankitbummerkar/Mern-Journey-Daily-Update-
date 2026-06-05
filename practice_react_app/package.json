@@ -1,5 +1,5 @@
 {
-  "name": "plant-api-react-project",
+  "name": "practice_react_app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,14 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@fortawesome/react-fontawesome": "^3.3.1",
     "@tailwindcss/vite": "^4.3.0",
-    "axios": "^1.17.0",
-    "dotenv": "^17.4.2",
-    "lucide-react": "^1.17.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "react-router-dom": "^7.16.0",
     "tailwindcss": "^4.3.0"
   },
   "devDependencies": {

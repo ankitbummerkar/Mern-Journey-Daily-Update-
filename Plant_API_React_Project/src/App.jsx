@@ -1,22 +1,41 @@
+import { Route, Routes } from "react-router-dom";
 import Hero from "./components/hero";
 import Nav from "./components/nav";
 import ProductList from "./components/product_list";
 import ProductTrending from "./components/product_trending";
 import Shippinginfo from "./components/shippinginfo";
+import Productdetails from "./components/product_details";
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-gray-100">
-      <Nav />
+    <>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Nav />
 
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
-        <Hero />
-      </div>
-      <Shippinginfo />
-      <ProductTrending />
+              <Hero />
 
-      <ProductList />
-    </div>
+              <Shippinginfo />
+              <ProductTrending />
+
+              <ProductList />
+            </>
+          }
+        />
+        <Route
+          path="/:mealid"
+          element={
+            <>
+              <Nav />
+              <Productdetails />
+            </>
+          }
+        />
+      </Routes>
+    </>
   );
 };
 
