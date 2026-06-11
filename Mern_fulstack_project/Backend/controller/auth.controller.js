@@ -19,11 +19,10 @@ export const signup = async (req, res) => {
     const verificationToken = Math.floor(
       10000 + Math.random() * 90000,
     ).toString();
-    const uniqueId = "USER" + Math.floor(100000 + Math.random() * 900000);
 
     const upiId = `${name.toLowerCase().replace(/\s/g, "")}@gratitudewallet`;
 
-    const paymentUrl = `http://localhost:5173/pay/${uniqueId}`;
+    const paymentUrl = `http://localhost:5173/pay/${upiId}`;
 
     const qrCode = await QRCode.toDataURL(paymentUrl);
 
@@ -91,4 +90,21 @@ export const logout = async (req, res) => {
   res.clearCookie("token");
 
   res.status(200).json({ success: true, message: "logged out successfully" });
+};
+
+// export const getMe = async (req, res) => {
+//   const user = await User.findOne();
+//   console.log(user);
+//   console.log(user.qrCode);
+//   res.json({
+//     success: true,
+//     user,
+//   });
+// };
+
+export const getMe = async (req, res) => {
+  res.status(200).json({
+    success: true,
+    user: req.user,
+  });
 };
