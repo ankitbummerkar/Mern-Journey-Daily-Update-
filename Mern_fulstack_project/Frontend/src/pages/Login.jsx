@@ -1,7 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
 
   const [password, setPassword] = useState("");
@@ -23,15 +26,16 @@ export default function Login() {
 
       console.log(response.data);
 
-      alert("logged in successfull");
+      toast.success("logged in successfull");
 
       setEmail("");
 
       setPassword("");
+      navigate("/dashboard");
     } catch (error) {
       console.log(error);
 
-      alert(error.response?.data?.message || "Signup Failed");
+      toast.error(error.response?.data?.message || "Signup Failed");
     }
   };
 

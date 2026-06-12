@@ -1,7 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 export default function Signup() {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
 
   const [email, setEmail] = useState("");
@@ -26,17 +28,20 @@ export default function Signup() {
 
       console.log(response.data);
 
-      alert("Signup Successful");
+      toast.success("Signup Successful");
 
       setName("");
 
       setEmail("");
 
       setPassword("");
+      setTimeout(() => {
+        navigate("/login");
+      }, 1000);
     } catch (error) {
       console.log(error);
 
-      alert(error.response?.data?.message || "Signup Failed");
+      toast.error(error.response?.data?.message || "Signup Failed");
     }
   };
 

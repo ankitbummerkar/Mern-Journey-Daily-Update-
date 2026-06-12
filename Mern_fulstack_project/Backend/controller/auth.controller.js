@@ -31,7 +31,6 @@ export const signup = async (req, res) => {
       password: hashpassword,
       name,
 
-      uniqueId,
       upiId,
       qrCode,
 

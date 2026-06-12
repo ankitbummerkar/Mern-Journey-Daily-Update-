@@ -18,11 +18,6 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
 
-    uniqueId: {
-      type: String,
-      unique: true,
-    },
-
     upiId: {
       type: String,
       unique: true,
