@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.CLIENT_URL,
     credentials: true,
   }),
 );
@@ -19,5 +19,5 @@ app.use("/auth", authRoutes);
 app.use("/payment", payRoutes);
 app.listen(5000, () => {
   connectdb();
-  console.log("server is running at port 5000");
+  console.log("server is running at port 5000 ");
 });

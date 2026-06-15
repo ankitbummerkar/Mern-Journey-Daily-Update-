@@ -11,9 +11,12 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/auth/me", {
-          withCredentials: true,
-        });
+        const res = await axios.get(
+          "https://phonepaybackend-yapz.onrender.com/auth/me",
+          {
+            withCredentials: true,
+          },
+        );
 
         setUser(res.data.user);
       } catch (error) {
@@ -28,7 +31,7 @@ export default function Dashboard() {
   const logout = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/auth/logout",
+        "https://phonepaybackend-yapz.onrender.com/auth/logout",
         {},
         {
           withCredentials: true,
@@ -37,9 +40,7 @@ export default function Dashboard() {
 
       toast.success(res.data.message);
 
-      setTimeout(() => {
-        navigate("/login");
-      }, 1000);
+      navigate("/login");
     } catch (error) {
       toast.error(error.response?.data?.message || "Logout failed");
     }
