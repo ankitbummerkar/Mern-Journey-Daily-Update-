@@ -53,7 +53,7 @@ const ProductList = () => {
           return (
             <div
               key={meal.idMeal}
-              className="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-2 transition duration-300 w-64"
+              className="bg-white rounded-3xl overflow-hidden shadow-md active:scale-90  hover:shadow-2xl hover:-translate-y-2 transition duration-300 w-64"
             >
               <div className="h-56 overflow-hidden">
                 <img
@@ -90,7 +90,7 @@ const ProductList = () => {
                       ${
                         itemExists
                           ? "bg-gray-400"
-                          : "bg-purple-700 hover:bg-purple-900"
+                          : "bg-purple-700 active:bg-purple-900 hover:bg-purple-900"
                       }
                     `}
                 >
