@@ -8,7 +8,7 @@ export default function ChatBox({ name }) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/all/messages")
+      .get("https://chat-app-backend-76gz.onrender.com/all/messages")
       .then((res) => setMessages(res.data));
 
     socket.on("receive_message", (msg) => {
