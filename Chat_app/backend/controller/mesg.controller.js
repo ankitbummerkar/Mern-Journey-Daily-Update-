@@ -2,7 +2,7 @@ import mesgModel from "../model/mesg.model.js";
 
 export const getMessages = async (req, res) => {
   try {
-    const messages = await mesgModel.find().toSorted({
+    const messages = await mesgModel.find().sort({
       createdAt: 1,
     });
 
