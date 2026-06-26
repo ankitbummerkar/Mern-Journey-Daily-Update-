@@ -28,7 +28,6 @@ export const createTodo = async (req, res, next) => {
   }
 };
 
-// GET ALL TODOS
 export const getTodos = async (req, res, next) => {
   try {
     const todos = await prisma.todo.findMany({
@@ -46,7 +45,6 @@ export const getTodos = async (req, res, next) => {
   }
 };
 
-// UPDATE TODO TEXT
 export const updateTodo = async (req, res, next) => {
   try {
     const { id } = req.params;
