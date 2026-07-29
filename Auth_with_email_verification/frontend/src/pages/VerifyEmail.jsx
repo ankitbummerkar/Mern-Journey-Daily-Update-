@@ -27,7 +27,7 @@ export default function VerifyEmail() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/verify-email",
+        "https://auth-with-email-verification-password.onrender.com/api/auth/verify-email",
         {
           code,
         },

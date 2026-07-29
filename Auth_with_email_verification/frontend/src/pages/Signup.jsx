@@ -37,7 +37,7 @@ export default function Signup() {
     try {
       console.log("Calling signup API...");
       const response = await axios.post(
-        "http://localhost:5000/api/auth/signup",
+        "https://auth-with-email-verification-password.onrender.com/api/auth/signup",
         {
           name,
           email,
