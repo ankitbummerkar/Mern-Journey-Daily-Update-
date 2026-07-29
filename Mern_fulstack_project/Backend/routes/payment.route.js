@@ -11,5 +11,6 @@ const router = express.Router();
 router.post("/add-money", verifyToken, addMoney);
 
 router.post("/send-money-upi", verifyToken, sendMoneyByUpi);
+router.post("/send-money-upi", verifyToken, sendMoneyByUpi);
 
 export default router;

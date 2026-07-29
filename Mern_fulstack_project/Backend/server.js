@@ -15,6 +15,7 @@ app.use(
     credentials: true,
   }),
 );
+
 app.use("/auth", authRoutes);
 app.use("/payment", payRoutes);
 app.listen(5000, () => {
