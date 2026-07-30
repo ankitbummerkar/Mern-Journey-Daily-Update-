@@ -11,7 +11,7 @@ export default function Dashboard() {
   const handleLogout = async () => {
     try {
       const response = await axios.post(
-        "https://authwithemailverify.vercel.app/api/auth/logout",
+        "https://auth-with-email-verification-password.onrender.com/api/auth/logout",
         {},
         {
           withCredentials: true,

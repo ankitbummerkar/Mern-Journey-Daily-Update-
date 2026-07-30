@@ -1,63 +1,71 @@
-import nodemailer from "nodemailer";
+import axios from "axios";
 import dotenv from "dotenv";
 
 dotenv.config();
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
-console.log(process.env.EMAIL_USER);
-console.log(process.env.EMAIL_PASS);
 
 export const sendVerificationEmail = async (email, code) => {
-  await transporter.sendMail({
-    from: process.env.EMAIL_USER,
-    to: email,
-    subject: "Verify Your Email",
+  try {
+    await axios.post(
+      "https://api.brevo.com/v3/smtp/email",
+      {
+        sender: {
+          name: process.env.EMAIL_FROM_NAME,
+          email: process.env.EMAIL_FROM,
+        },
 
-    html: `
-      <div style="max-width:500px;margin:auto;font-family:Arial,sans-serif;border:1px solid #ddd;padding:30px;border-radius:8px;">
-      
-        <h2 style="text-align:center;">
-          Verify Your Email
-        </h2>
+        to: [
+          {
+            email,
+          },
+        ],
 
-        <p>Hello,</p>
+        subject: "Verify Your Email",
 
-        <p>
-          Thank you for signing up.
-        </p>
+        htmlContent: `
+        <div style="max-width:500px;margin:auto;font-family:Arial,sans-serif;border:1px solid #ddd;padding:30px;border-radius:8px;">
 
-        <p>
-          Please use the verification code below:
-        </p>
+          <h2 style="text-align:center;">
+            Verify Your Email
+          </h2>
 
-        <div
-          style="
-            text-align:center;
-            font-size:32px;
-            font-weight:bold;
-            letter-spacing:8px;
-            padding:20px;
-            background:#f4f4f4;
-            margin:20px 0;
-          "
-        >
-          ${code}
+          <p>Hello,</p>
+
+          <p>Thank you for signing up.</p>
+
+          <p>Please use the verification code below:</p>
+
+          <div
+            style="
+              text-align:center;
+              font-size:32px;
+              font-weight:bold;
+              letter-spacing:8px;
+              padding:20px;
+              background:#f4f4f4;
+              margin:20px 0;
+            "
+          >
+            ${code}
+          </div>
+
+          <p>This code is valid for 24 hours.</p>
+
         </div>
+        `,
+      },
+      {
+        headers: {
+          accept: "application/json",
+          "api-key": process.env.BREVO_API_KEY,
+          "content-type": "application/json",
+        },
+      },
+    );
 
-        <p>
-          This code is valid for 24 hours.
-        </p>
+    console.log("Verification Email Sent");
+  } catch (error) {
+    console.error(error.response?.data || error.message);
 
-        <p>
-          If you didn't create this account, you can ignore this email.
-        </p>
-
-      </div>
-    `,
-  });
+    throw error;
+  }
 };
